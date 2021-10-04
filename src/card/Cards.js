@@ -5,8 +5,8 @@ import { Card } from 'react-bootstrap';
 const Cards = (props) => {
     const {title,price,img,details}=props.course;
     return (
-        <div className='m-5'>
-           <Card style={{ width: '15rem' }}>
+        <div>
+           <Card style={{ width: '100%' }}>
   <Card.Img style={{height:'15rem'}} variant="top" src={img}/>
   <Card.Body>
     <Card.Title>{title}</Card.Title>

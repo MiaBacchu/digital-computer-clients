@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <Navbar bg="dark" variant="dark">
-    <Container>
-    <Navbar.Brand className='text-info'>Mia Bacchu</Navbar.Brand>
+    <Container className='py-4'>
+    <Navbar.Brand className='text-info fs-2'>Mia Bacchu</Navbar.Brand>
     <Nav className="me-auto">
-      <NavLink  className='m-2 text-white' to="/home" >Home</NavLink>
-      <NavLink  className='m-2 text-white' to="/services">Services</NavLink>
-      <NavLink  className='m-2 text-white' to="/about">About Us</NavLink>
-      <NavLink  className='m-2 text-white' to="/contact">Contact Us</NavLink>
+      <NavLink  className='m-2 text-white text-decoration-none fs-3' to="/home" >Home</NavLink>
+      <NavLink  className='m-2 text-white text-decoration-none fs-3' to="/services">Services</NavLink>
+      <NavLink  className='m-2 text-white text-decoration-none fs-3' to="/about">About Us</NavLink>
+      <NavLink  className='m-2 text-white text-decoration-none fs-3' to="/contact">Contact Us</NavLink>
     </Nav>
     </Container>
   </Navbar>

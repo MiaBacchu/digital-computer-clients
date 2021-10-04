@@ -9,23 +9,23 @@ import NotFound from './notfound/NotFound';
 import Services from './services/Services';
 
 function App() {
-  // const homeStyle = {
-  //   display: 'flex',justifyContent: 'center'};
+  const homeStyle = {
+    display: 'grid',gridTemplateColumns: 'repeat(3, 1fr)',gridGap:'30px'};
 const servicesStyle = {
-  display: 'grid',gridTemplateColumns: 'repeat(3, 1fr)'};
+  display: 'grid',gridTemplateColumns: 'repeat(4, 1fr)',gridGap:'20px'};
   return (
     <div className="App">
       <BrowserRouter>
       <Header></Header>
       <Switch>
       <Route exact path='/'>
-      <div className="d-md-flex justify-content-center"><Home></Home></div>
+      <div className='m-4' style={homeStyle}><Home></Home></div>
       </Route>
       <Route path='/home'>
-      <div className="d-flex justify-content-center"><Home></Home></div>
+      <div className='m-4' style={homeStyle}><Home></Home></div>
       </Route>
       <Route path='/services'>
-        <div style={servicesStyle}><Services></Services></div>
+        <div className='m-4' style={servicesStyle}><Services></Services></div>
       </Route>
       <Route path='/about'>
         <About></About>
