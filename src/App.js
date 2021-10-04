@@ -9,8 +9,8 @@ import NotFound from './notfound/NotFound';
 import Services from './services/Services';
 
 function App() {
-  const homeStyle = {
-    display: 'flex',justifyContent: 'center'};
+  // const homeStyle = {
+  //   display: 'flex',justifyContent: 'center'};
 const servicesStyle = {
   display: 'grid',gridTemplateColumns: 'repeat(3, 1fr)'};
   return (
@@ -19,10 +19,10 @@ const servicesStyle = {
       <Header></Header>
       <Switch>
       <Route exact path='/'>
-      <div style={homeStyle}><Home></Home></div>
+      <div className="d-md-flex justify-content-center"><Home></Home></div>
       </Route>
       <Route path='/home'>
-      <div style={homeStyle}><Home></Home></div>
+      <div className="d-flex justify-content-center"><Home></Home></div>
       </Route>
       <Route path='/services'>
         <div style={servicesStyle}><Services></Services></div>
