@@ -1,3 +1,4 @@
+import { Row } from 'react-bootstrap';
 import { BrowserRouter ,Switch ,Route} from 'react-router-dom';
 import About from './about/About';
 import './App.css';
@@ -9,23 +10,19 @@ import NotFound from './notfound/NotFound';
 import Services from './services/Services';
 
 function App() {
-  const homeStyle = {
-    display: 'grid',gridTemplateColumns: 'repeat(3, 1fr)',gridGap:'30px'};
-const servicesStyle = {
-  display: 'grid',gridTemplateColumns: 'repeat(4, 1fr)',gridGap:'20px'};
   return (
     <div className="App">
       <BrowserRouter>
       <Header></Header>
       <Switch>
       <Route exact path='/'>
-      <div className='m-4' style={homeStyle}><Home></Home></div>
+      <Row><Home></Home></Row>
       </Route>
       <Route path='/home'>
-      <div className='m-4' style={homeStyle}><Home></Home></div>
+      <Row><Home></Home></Row>
       </Route>
       <Route path='/services'>
-        <div className='m-4' style={servicesStyle}><Services></Services></div>
+      <Row><Services></Services></Row>
       </Route>
       <Route path='/about'>
         <About></About>

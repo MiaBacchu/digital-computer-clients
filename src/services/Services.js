@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Row } from 'react-bootstrap';
 import Cards from '../card/Cards';
 
 const Services = () => {
@@ -9,7 +10,7 @@ const Services = () => {
     .then(data=>setCourses(data))
   },[])
     return (
-        courses.map(course=><div><Cards course={course}></Cards></div>)
+        courses.map(course=><Cards course={course}></Cards>)
     );
 };
 
