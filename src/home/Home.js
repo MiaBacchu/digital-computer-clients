@@ -1,14 +1,9 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import Cards from '../card/Cards';
+import SetCourse from '../setCourse/SetCourse';
 
 const Home = () => {
-    const [courses,setCourses]=useState([]);
-  useEffect(()=>{
-    fetch('course.json')
-    .then(res=>res.json())
-    .then(data=>setCourses(data))
-  },[])
+    const [courses]=SetCourse()
     return (
         courses.slice(0,6).map(course=><Cards course={course}></Cards>)
     )

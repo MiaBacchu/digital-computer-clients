@@ -11,7 +11,6 @@ import Services from './services/Services';
 
 function App() {
   return (
-    <div className="App">
       <BrowserRouter>
       <Header></Header>
       <Switch>
@@ -36,7 +35,6 @@ function App() {
       </Switch>
       <Footer></Footer>
       </BrowserRouter>
-    </div>
   );
 }
 

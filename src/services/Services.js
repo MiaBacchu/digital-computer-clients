@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
 import Cards from '../card/Cards';
+import SetCourse from '../setCourse/SetCourse';
 
 const Services = () => {
-    const [courses,setCourses]=useState([]);
-  useEffect(()=>{
-    fetch('course.json')
-    .then(res=>res.json())
-    .then(data=>setCourses(data))
-  },[])
+  const [courses]=SetCourse()
     return (
         courses.map(course=><Cards course={course}></Cards>)
     );
