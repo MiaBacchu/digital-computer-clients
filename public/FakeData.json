@@ -1,0 +1,16 @@
+[
+    {"id":1,"name":"Pulmonary","details":"we are ready to serve you","img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCZyCet0jvLwRkCq_pj4X58qpJSaZZPPaxA&usqp=CAU"},
+    {"id":2,"name":"Cardiology","details":"we are ready to serve you","img":"https://news.sanfordhealth.org/wp-content/uploads/2017/12/455237505-780x537.jpg"},
+    {"id":3,"name":"Cosmetic Solutions","details":"we are ready to serve you","img":"https://www.laingbuissonnews.com/wp-content/uploads/sites/3/2021/03/cosmetic-beauty-fillers-botox.jpg"},
+    {"id":4,"name":"Eye","details":"we are ready to serve you","img":"https://upload.wikimedia.org/wikipedia/commons/8/8f/Human_eye_with_blood_vessels.jpg"},
+    {"id":5,"name":"Dental care","details":"we are ready to serve you","img":"https://static.toiimg.com/thumb/msid-79085056,width-800,height-600,resizemode-75,imgsize-750180,pt-32,y_pad-40/79085056.jpg"},
+    {"id":6,"name":"Ear treatment","details":"we are ready to serve you","img":"https://cdn.pasadenamag.com/wp-content/uploads/sites/69/2021/01/ear-seeds-being-applied.jpg"},
+    {"id":7,"name":"Dhaka Branch","details":"we are ready to serve you","img":"https://www.google.com/maps/d/thumbnail?mid=1Ws19zwTXTRC49_P9di0UQhqWRVM"},
+    {"id":8,"name":"Gazipur Branch","details":"we are ready to serve you","img":"https://media-eng.dhakatribune.com/uploads/2018/06/gazipur-1529153928496.jpg"},
+    {"id":9,"name":"Khulna Branch","details":"we are ready to serve you","img":"https://www.google.com/maps/d/thumbnail?mid=1Ud5DRnqhKifdeHQ0wjENsGgLp_0"},
+    {"id":10,"name":"Rangpur","details":"we are ready to serve you","img":"https://omkarmedicom.com/wp-content/uploads/2020/10/Map-of-Prime-Medical-College.jpg"},
+    {"id":11,"name":"Martha M. Masters","details":"Marthana is a proffesional cardiologist trained from usa.He is available in saturday,monday & thursday.He is ready for you to serve his best.","about":"Marketing - WikiTravel","img":"https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg?size=626&ext=jpg"},
+    {"id":12,"name":"Anna Vandana","details":"Anna Vandana is a proffesional medicine specialist trained from uk.He is available in saturday & tuesday.He is ready for you to serve his best.","about":"CEO - Media Wiki","img":"https://post.healthline.com/wp-content/uploads/2019/01/Male_Doctor_732x549-thumbnail.jpg"},
+    {"id":13,"name":"Maxi Milli","details":"Maxi is a proffesional surgery specialist trained from Canada.He is available in sunday,monday & wednesday.He is ready for you to serve his best.","about":"Public Relations - Max Mobilcom","img":"https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"},
+    {"id":14,"name":"Dr. Dosist","details":"Dosist is a proffesional baby health specialist trained from Germany.He is available in saturday,monday & thursday.He is ready for you to serve his best.","about":"Dean of Medicine - Doom Inc","img":"https://cdn.pngsumo.com/doctor-vectors-photos-and-psd-files-free-download-indian-girl-doctor-png-626_546.jpg"}
+]
