@@ -6,6 +6,7 @@ import initializeAuthentication from "../../fireBase/initialize";
 initializeAuthentication()
 const useFirebase = () => {
     const [user,setUser]=useState([])
+    const [error,setError]=useState([])
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
@@ -17,6 +18,9 @@ const useFirebase = () => {
         .then(result=>{
             setUser(result.user)
         })
+        .catch((error) => {
+            setError(error.message);
+          });
     }
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -28,6 +32,9 @@ const useFirebase = () => {
     .then(() => {
         setUser({})
       })
+      .catch((error) => {
+        setError(error.message);
+      });
     }
     const handleRegister = e => {
         e.preventDefault();
@@ -39,6 +46,9 @@ const useFirebase = () => {
         .then(result => {
             console.log(result)
         })
+        .catch((error) => {
+            setError(error.message);
+          });
     }
     const handleName=e=>{
         setName(e.target.value)
@@ -55,6 +65,9 @@ const useFirebase = () => {
             setUser(result.user);
             console.log(result.user)
           })
+          .catch((error) => {
+            setError(error.message);
+          });
     }
     const processLogin=()=>{
         signInWithEmailAndPassword(auth, email, password)
@@ -62,18 +75,22 @@ const useFirebase = () => {
             setUser(result.user);
             console.log(result.user)
           })
+          .catch((error) => {
+            setError(error.message);
+          });
     }
     const toggleLogin=(e)=>{
         setIslogin(e.target.checked)
     }
     return {
-        isLogin,
         toggleLogin,
         handlePassword,
         handleEmail,
         handleName,
         handleRegister,
         logout,
+        isLogin,
+        error,
         user,
         googleSignIn
     };

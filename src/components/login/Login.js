@@ -2,7 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
-    const {googleSignIn,handleRegister,handleName,handleEmail,handlePassword,toggleLogin,isLogin}=useAuth();
+    const {googleSignIn,handleRegister,handleName,handleEmail,handlePassword,toggleLogin,isLogin,error}=useAuth();
     return (
         <div className="m-5">
           <h1 className="text-primary">{isLogin ? 'Login':'Register'} Here</h1>
@@ -23,6 +23,7 @@ const Login = () => {
   </Form.Group>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check onChange={toggleLogin} type="checkbox" label="Already Registered?" />
+    {error}
   </Form.Group>
   <Button variant="primary" type="submit">
   {isLogin ? 'Login':'Register'}
