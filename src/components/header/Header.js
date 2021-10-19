@@ -15,8 +15,8 @@ const Header = () => {
       <Nav.Link as={Link} to="/home">Home</Nav.Link>
       <Nav.Link as={Link} to="/about">About Us</Nav.Link>
       <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-      <Nav.Link className='text-white' disabled>{user.displayName}</Nav.Link>
-      <Nav.Link onClick={logout} as={Link} to="/login">{user.displayName ? 'Logout':'Login'}</Nav.Link>
+      <Nav.Link className='text-white' disabled>{user.email}</Nav.Link>
+      <Nav.Link onClick={logout} as={Link} to="/login">{user.email ? 'Logout':'Login'}</Nav.Link>
     </Nav>
     </Navbar.Collapse>
     </Container>
