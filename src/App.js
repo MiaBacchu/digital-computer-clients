@@ -9,10 +9,15 @@ import Schedule from './components/schedule/Schedule';
 import About from './components/about/About';
 import Contact from './components/contact/Contact';
 import NotFound from './components/notFound/NotFound';
+import Details from './components/details/Details';
+import Login from './components/login/Login';
+import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './components/private/PrivateRoute';
 
 function App() {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
     <Header></Header>
     <Switch>
     <Route exact path='/'>
@@ -27,11 +32,17 @@ function App() {
         <Schedule></Schedule>
         <Branches></Branches>
       </Route>
-      <Route path='/about'>
+      <PrivateRoute path='/about'>
         <About></About>
-      </Route>
-      <Route path='/contact'>
+      </PrivateRoute>
+      <PrivateRoute path='/contact'>
         <Contact></Contact>
+      </PrivateRoute>
+      <PrivateRoute path='/details/:serviceDetails'>
+        <Details></Details>
+      </PrivateRoute>
+      <Route path='/login'>
+        <Login></Login>
       </Route>
       <Route path='*'>
         <NotFound></NotFound>
@@ -39,6 +50,7 @@ function App() {
     </Switch>
     <Footer></Footer>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
