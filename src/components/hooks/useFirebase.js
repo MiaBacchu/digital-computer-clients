@@ -6,6 +6,7 @@ import initializeAuthentication from "../../fireBase/initialize";
 initializeAuthentication()
 const useFirebase = () => {
     const [user,setUser]=useState([])
+    console.log(user)
     const [error,setError]=useState([])
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
@@ -25,18 +26,6 @@ const useFirebase = () => {
           })
           .finally(()=>setIsLoading(false))
     }
-    useEffect(()=>{
-        const unsubscribed= onAuthStateChanged(auth, (user) => {
-            if (user) {
-              setUser(user)  
-            } 
-            else {
-                setUser({})
-            }
-            setIsLoading(false)
-          });
-          return()=>unsubscribed;
-    },[])
     const logout=()=>{
         setIsLoading(true)
         signOut(auth)
@@ -73,8 +62,10 @@ const useFirebase = () => {
     const processRegister=()=>{
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
+            setUserName()
             setUser(result.user);
           })
+          .then(() => window.location.reload())
           .catch((error) => {
             setError(error.message);
           });
@@ -90,7 +81,19 @@ const useFirebase = () => {
     }
     const toggleLogin=(e)=>{
         setIslogin(e.target.checked)
-    }     
+    }
+    useEffect(()=>{
+        const unsubscribed= onAuthStateChanged(auth, (user) => {
+            if (user) {
+              setUser(user)  
+            } 
+            else {
+                setUser({})
+            }
+            setIsLoading(false)
+          });
+          return()=>unsubscribed;
+    },[])     
     return {
         toggleLogin,
         handlePassword,
