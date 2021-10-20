@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import initializeAuthentication from "../../fireBase/initialize";
 
 
@@ -11,30 +11,42 @@ const useFirebase = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [isLogin,setIslogin]=useState(false)
+    const [isLoading,setIsLoading]=useState(true)
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const googleSignIn=()=>{
+        setIsLoading(true)
         signInWithPopup(auth, googleProvider)
         .then(result=>{
             setUser(result.user)
         })
         .catch((error) => {
             setError(error.message);
-          });
+          })
+          .finally(()=>setIsLoading(false))
     }
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUser(user)
-        }
-    });
+    useEffect(()=>{
+        const unsubscribed= onAuthStateChanged(auth, (user) => {
+            if (user) {
+              setUser(user)  
+            } 
+            else {
+                setUser({})
+            }
+            setIsLoading(false)
+          });
+          return()=>unsubscribed;
+    },[])
     const logout=()=>{
+        setIsLoading(true)
         signOut(auth)
     .then(() => {
         setUser({})
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(()=>setIsLoading(false))
     }
     const handleRegister = e => {
         e.preventDefault();
@@ -42,9 +54,8 @@ const useFirebase = () => {
         setUserName()
     }
     const setUserName=()=>{
-        updateProfile(auth.currentUser, {displayName:name})
+        updateProfile(auth?.currentUser, {displayName:name})
         .then(result => {
-            console.log(result)
         })
         .catch((error) => {
             setError(error.message);
@@ -63,7 +74,6 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
             setUser(result.user);
-            console.log(result.user)
           })
           .catch((error) => {
             setError(error.message);
@@ -73,7 +83,6 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
             setUser(result.user);
-            console.log(result.user)
           })
           .catch((error) => {
             setError(error.message);
@@ -81,7 +90,7 @@ const useFirebase = () => {
     }
     const toggleLogin=(e)=>{
         setIslogin(e.target.checked)
-    }
+    }     
     return {
         toggleLogin,
         handlePassword,
@@ -92,6 +101,7 @@ const useFirebase = () => {
         isLogin,
         error,
         user,
+        isLoading,
         googleSignIn
     };
 };
