@@ -13,10 +13,12 @@ import Details from './components/details/Details';
 import Login from './components/login/Login';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './components/private/PrivateRoute';
+import ServicesProvider from './context/ServicesProvider';
 
 function App() {
   return (
     <AuthProvider>
+      <ServicesProvider>
       <BrowserRouter>
     <Header></Header>
     <Switch>
@@ -32,13 +34,13 @@ function App() {
         <Schedule></Schedule>
         <Branches></Branches>
       </Route>
-      <PrivateRoute path='/about'>
+      <Route path='/about'>
         <About></About>
-      </PrivateRoute>
+      </Route>
       <PrivateRoute path='/contact'>
         <Contact></Contact>
       </PrivateRoute>
-      <PrivateRoute path='/details/:serviceDetails'>
+      <PrivateRoute path='/details/:serviceId'>
         <Details></Details>
       </PrivateRoute>
       <Route path='/login'>
@@ -50,6 +52,7 @@ function App() {
     </Switch>
     <Footer></Footer>
     </BrowserRouter>
+      </ServicesProvider>
     </AuthProvider>
   );
 }

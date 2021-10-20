@@ -3,7 +3,7 @@ import { Card, Button, Col, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Service = ({service}) => {
-    const {name,details,img}=service;
+    const {id,name,details,img}=service;
     return (
           <Col xs={12} sm={6} md={4} >
         <Card className="w-100 my-3">
@@ -13,7 +13,7 @@ const Service = ({service}) => {
     <Card.Text>
      {details}
     </Card.Text>
-    <Link to={`details/${details}`}>
+    <Link to={`details/${id}`}>
     <Button variant="primary">See Details</Button>
     </Link>
   </Card.Body>
