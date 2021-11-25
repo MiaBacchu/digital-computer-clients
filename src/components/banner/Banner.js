@@ -1,46 +1,16 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
 
 const Banner = () => {
     return (
-            <Carousel>
-  <Carousel.Item>
-    <img style={{height:'30rem'}}
-      className="d-block w-100"
-      src="https://image.freepik.com/free-photo/smiling-young-blonde-female-doctor-wearing-medical-robe-stethoscope-around-neck-holding-clipboard-pointing-side_409827-64.jpg"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>Doctor Marry Watt</h3>
-      <p>Expert in Medincine & Baby Health</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{height:'30rem'}}
-      className="d-block w-100"
-      src="https://image.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg"
-      alt="Second slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Doctor Inna White</h3>
-      <p>Expert in Brain & Neorology</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{height:'30rem'}}
-      className="d-block w-100"
-      src="https://image.freepik.com/free-photo/healthcare-workers-medicine-covid-19-pandemic-self-quarantine-concept-smiling-attractive-doctor-scrubs-glasses-stethoscope-neck-cross-arms-chest-ready-help-patients_1258-58772.jpg"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Doctor Thomas Curran</h3>
-      <p>Expert in Medicine & Heart Disease</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
+        <div className="d-flex m-5 align-items-center">
+        <div className="w-50">
+            <h1>Sometimes We have
+Free Delivery</h1>
+Get the benefit of Cash on Collection, You can book in simple 3 steps. Get Quote Now! Bangladesh's best international courier service near you</div>
+        <div className="w-50">
+            <img className="w-75" src="https://console.kr-asia.com/wp-content/uploads/2020/05/Food-Delivery-Shutterstock-M-Size-1-scaled.jpg" alt="" />
+        </div>
+        </div>
     );
 };
-
 export default Banner;

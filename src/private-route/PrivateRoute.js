@@ -1,12 +1,11 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
-import { Redirect, Route } from 'react-router';
-import useAuth from '../hooks/useAuth';
+import { Spinner } from "react-bootstrap";
+import { Route, Redirect } from "react-router-dom";
+import useAuth from "../contex-api/useAuth";
 
 function PrivateRoute({ children, ...rest }) {
-    const {user,isLoading} = useAuth();
+    const {user, isLoading} = useAuth();
     if (isLoading) {
-      return <Spinner animation="border" variant="secondary" />
+      return <Spinner animation="border" />
     }
     return (
       <Route
@@ -26,5 +25,4 @@ function PrivateRoute({ children, ...rest }) {
       />
     );
   }
-
-export default PrivateRoute;
+  export default PrivateRoute;

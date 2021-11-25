@@ -1,26 +1,31 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../contex-api/useAuth';
 
 const Header = () => {
-  const {user,logout}=useAuth()
+  const {user,logOut}=useAuth()
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <div>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand>Mia Bacchu General Hospital</Navbar.Brand>
+    <Navbar.Brand className="fs-3">Mia Bacchu Food Hotel</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link as={Link} to="/home">Home</Nav.Link>
-      <Nav.Link as={Link} to="/about">About Us</Nav.Link>
-      <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-      <Nav.Link className='text-white' disabled>{user.displayName}</Nav.Link>
-      <Nav.Link onClick={logout} as={Link} to="/login">{user.displayName ? 'Logout':'Login'}</Nav.Link>
+      <Link className="mx-4 text-decoration-none fs-5" to="/home">Home</Link>
+      <Link style={{display: user.email ? 'block' : 'none'}} className="me-4 text-decoration-none fs-5" to="/myOrder">My Order</Link>
+      <Link to='/manageAllOrder' className="me-4 text-decoration-none fs-5">Manage ALL Order</Link>
+      <Link className="me-4 text-decoration-none fs-5" to="/addService">Add Service</Link>
+      <Link className="text-decoration-none fs-5">{user.displayName}</Link>
+      <Link onClick={logOut} className="ms-4 text-decoration-none fs-5" to="/login">{
+        user.displayName ? "logOut": "Login"
+      }</Link>
     </Nav>
     </Navbar.Collapse>
     </Container>
   </Navbar>
+        </div>
     );
 };
 

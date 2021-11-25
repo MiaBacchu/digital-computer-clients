@@ -1,35 +1,26 @@
-import { Button, Form } from 'react-bootstrap';
-import useAuth from '../hooks/useAuth';
+import React from 'react';
+import useAuth from '../../contex-api/useAuth';
 
 const Login = () => {
-    const {googleSignIn,handleRegister,handleName,handleEmail,handlePassword,toggleLogin,isLogin,error}=useAuth();
+const{googleSignIn}=useAuth()
     return (
-        <div className="m-5">
-          <h1 className="text-primary">{isLogin ? 'Login':'Register'} Here</h1>
-            <Form onSubmit={handleRegister}>
-            {!isLogin && <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>User Name</Form.Label>
-    <Form.Control onBlur={handleName} type="name" placeholder="Your Name" required />
-  </Form.Group>}
-
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control onBlur={handleEmail} type="email" placeholder="Enter email" required/>
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control onBlur={handlePassword} type="password" placeholder="Password" required/>
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check onChange={toggleLogin} type="checkbox" label="Already Registered?" />
-    {error}
-  </Form.Group>
-  <Button variant="primary" type="submit">
-  {isLogin ? 'Login':'Register'}
-  </Button>
-</Form>
-<button onClick={googleSignIn} className='bg-secondary my-4 text-white rounded'>Google Sign In</button>
+        <div className="m-3">
+            <form>
+  <div className="mb-3">
+    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+  </div>
+  <div className="mb-3">
+    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+    <input type="password" className="form-control" id="exampleInputPassword1"/>
+  </div>
+  <div className="mb-3 form-check">
+    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" className="btn btn-primary">Submit</button>
+</form>
+<button className="my-3" onClick={googleSignIn}>google sign in</button>
         </div>
     );
 };
