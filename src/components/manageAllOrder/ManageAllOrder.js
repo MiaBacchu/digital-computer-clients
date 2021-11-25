@@ -5,14 +5,14 @@ import { useState } from 'react';
 const ManageAllOrder = () => {
     const [orders,setOrders]=useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/user`)
+        fetch(`https://glacial-retreat-23890.herokuapp.com/user`)
         .then(res=>res.json())
         .then(data=>setOrders(data))
       },[])
       const handleDelete=(id)=>{
           const proceed=window.confirm('are you sure?')
           if (proceed) {
-            fetch(`http://localhost:5000/user/${id}`,{
+            fetch(`https://glacial-retreat-23890.herokuapp.com/user/${id}`,{
                 method:'DELETE'
             })
             .then(res=>res.json())
@@ -22,7 +22,7 @@ const ManageAllOrder = () => {
           }
       }
       const handleApprove=(id)=>{
-        fetch(`http://localhost:5000/user/${id}`,{
+        fetch(`https://glacial-retreat-23890.herokuapp.com/user/${id}`,{
             method:'PUT'
         })
         .then(res=>res.json())

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useAuth from '../../contex-api/useAuth';
 
 const PlaceOrder = () => {
@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const [food,setFood]=useState({})
     const { serviceId } = useParams();
     useEffect(()=>{
-        fetch(`http://localhost:5000/food/${serviceId}`)
+        fetch(`https://glacial-retreat-23890.herokuapp.com/food/${serviceId}`)
         .then(res=>res.json())
         .then(data=>setFood(data))      
       },[serviceId])
@@ -25,7 +25,7 @@ const PlaceOrder = () => {
           const addressName=addressRef.current.value
           const priceName=priceRef.current.value
           const newUser={userName,emailName,foodName,addressName,priceName,status:"pending"}
-          fetch(`http://localhost:5000/user`,{
+          fetch(`https://glacial-retreat-23890.herokuapp.com/user`,{
             method:'post',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(newUser)

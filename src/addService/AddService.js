@@ -13,7 +13,7 @@ const AddService = () => {
         const price=priceRef.current.value
         const newUser={name,description,img,price}
 
-        fetch('http://localhost:5000/food',{
+        fetch('https://glacial-retreat-23890.herokuapp.com/food',{
             method:'post',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(newUser)

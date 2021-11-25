@@ -5,7 +5,7 @@ const MyOrder = () => {
     const {user}=useAuth()
     const [orders,setOrders]=useState([])
     useEffect(()=>{
-        const url= `http://localhost:5000/user/${user.email}`
+        const url= `https://glacial-retreat-23890.herokuapp.com/user/${user.email}`
         fetch(url)
         .then(res=>res.json())
         .then(data=>setOrders(data))
@@ -13,7 +13,7 @@ const MyOrder = () => {
       const handleDelete=(id)=>{
           const proceed=window.confirm('are you sure?')
           if (proceed) {
-            fetch(`http://localhost:5000/user/${id}`,{
+            fetch(`https://glacial-retreat-23890.herokuapp.com/user/${id}`,{
                 method:'DELETE'
             })
             .then(res=>res.json())
