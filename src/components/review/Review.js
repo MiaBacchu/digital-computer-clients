@@ -1,57 +1,37 @@
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import Rating from 'react-rating';
+import { useState } from 'react/cjs/react.development';
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const Review = () => {
+    const [reviews,setReviews]=useState([])
+    useEffect(()=>{
+        fetch('http://localhost:5000/review')
+        .then(res=>res.json())
+        .then(data=>setReviews(data))
+    },[])
     return (
-        <div>
-            <h1 className='text-center'>Our Clients Says</h1>
-        <Row className="mx-3">
-<Col xs={12} sm={6} md={4} lg={3}>
-    <Card className='my-3'>
-    <Card.Img style={{height:'15rem'}} variant="top" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYiQVI64BOhcmcvgwR3TrgsgxkEyWmQCdz9g&usqp=CAU' />
-    <Card.Body>
-    <Card.Title>Matty White</Card.Title>
-    <Card.Text>
-        This is very good service provider food hotel.I am totally satisfied about their services.You can order from this restaurant.
-    </Card.Text>
-    </Card.Body>
-</Card>
-    </Col>
-    <Col xs={12} sm={6} md={4} lg={3}>
-    <Card className='my-3'>
-    <Card.Img style={{height:'15rem'}} variant="top" src='https://i.ibb.co/DgqkMXH/images.jpg' />
-    <Card.Body>
-    <Card.Title>John Carry</Card.Title>
-    <Card.Text>
-        This is very good service provider food hotel.I am totally satisfied about their services.You can order from this restaurant.
-    </Card.Text>
-    </Card.Body>
-</Card>
-    </Col>
-    <Col xs={12} sm={6} md={4} lg={3}>
-    <Card className='my-3'>
-    <Card.Img style={{height:'15rem'}} variant="top" src='https://i.ibb.co/rsGx6Qs/download-1.jpg' />
-    <Card.Body>
-    <Card.Title>Juliana Brown</Card.Title>
-    <Card.Text>
-        This is very good service provider food hotel.I am totally satisfied about their services.You can order from this restaurant.
-    </Card.Text>
-    </Card.Body>
-</Card>
-    </Col>
-    <Col xs={12} sm={6} md={4} lg={3}>
-    <Card className='my-3'>
-    <Card.Img style={{height:'15rem'}} variant="top" src='https://i.ibb.co/376WvVk/download.jpg' />
-    <Card.Body>
-    <Card.Title>Pat Cristian</Card.Title>
-    <Card.Text>
-        This is very good service provider food hotel.I am totally satisfied about their services.You can order from this restaurant.
-    </Card.Text>
-    </Card.Body>
-</Card>
-    </Col>
-    </Row>
+        <>
+        <h1 className='text-center text-7xl text-red-500 my-16'>Clients Reviews</h1>
+        <div className='grid grid-cols-3 text-4xl mx-5'>
+            {reviews.map(review=>
+    <div key={review._id} className='my-9 mx-auto'>
+    <div className='w-80 py-8 shadow-2xl rounded-lg px-5'>
+        <img className='w-full h-56' src={review.photoURL} alt="" />
+        <h1 className='text-4xl mb-5'>Name : {review.name}</h1>
+        <h5 className='text-2xl mb-5 break-words'>{review.comments}</h5>
+        <h1>
+            <Rating
+            emptySymbol={<AiOutlineStar  className='text-yellow-400'/>}
+            fullSymbol={<AiFillStar className='text-yellow-400'/>}
+            initialRating={review.ratings}
+            readonly
+            ></Rating>
+        </h1>
+    </div>
+        </div>)}
         </div>
+        </>
     );
 };
 

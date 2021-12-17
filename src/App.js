@@ -1,55 +1,72 @@
-import './App.css';
-import { BrowserRouter, Route} from "react-router-dom";
-import Area from './components/area/Area';
-import Banner from './components/banner/Banner';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import Review from './components/review/Review';
-import Services from './components/services/Services';
-import PlaceOrder from './components/placeOrder/PlaceOrder';
-import Login from './components/login/Login';
-import AuthProvider from './contex-api/AuthProvider';
-import PrivateRoute from './private-route/PrivateRoute';
-import AddService from './addService/AddService';
-import MyOrder from './components/myOrder/MyOrder';
-import ManageAllOrder from './components/manageAllOrder/ManageAllOrder';
+import React from 'react';
+import { Routes,Route, BrowserRouter, } from 'react-router-dom';
+import AboutUs from './Components/AboutUs/AboutUs';
+import Banner from './Components/Banner/Banner';
+import AddProduct from './Components/Dashboard/AddProduct/AddProduct';
+import Dashboard from './Components/Dashboard/Dashboard';
+import DashboardHome from './Components/Dashboard/DashboardHome/DashboardHome';
+import DashboardReview from './Components/Dashboard/DashboardReview/DashboardReview';
+import MakeAdmin from './Components/Dashboard/MakeAdmin/MakeAdmin';
+import ManageAllOrders from './Components/Dashboard/ManageAllOrders/ManageAllOrders';
+import ManageProduct from './Components/Dashboard/ManageProduct/ManageProduct';
+import MyOrder from './Components/Dashboard/MyOrder/MyOrder';
+import Payment from './Components/Dashboard/Payment/Payment';
+import Explore from './Components/Explore/Explore';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Login from './Components/Login/Login';
+import Register from './Components/Login/Register';
+import PlaceOrder from './Components/PlaceOrder/PlaceOrder';
+import Product from './Components/Product/Product';
+import Review from './Components/Review/Review';
 
-function App() {
+const App = () => {
   return (
-      <AuthProvider>
-        <BrowserRouter>
+    <BrowserRouter>
     <Header></Header>
-      <Route exact path='/'>
-        <Banner></Banner>
-        <Services></Services>
-        <Area></Area>
-        <Review></Review>
-      </Route>
-      <Route path='/home'>
-        <Banner></Banner>
-        <Services></Services>
-        <Area></Area>
-        <Review></Review>
-      </Route>
-      <PrivateRoute path="/placeOrder/:serviceId">
-        <PlaceOrder></PlaceOrder>
-      </PrivateRoute>
-      <PrivateRoute path="/myOrder">
-        <MyOrder></MyOrder>
-      </PrivateRoute>
-      <Route path='/manageAllOrder'>
-        <ManageAllOrder></ManageAllOrder>
-      </Route>
-      <Route path='/addService'>
-        <AddService></AddService>
-      </Route>
-      <Route path='/login'>
+    <Routes>
+      <Route path='/' element={
+      <div>
+      <Banner></Banner>
+      <Product></Product>
+      <Review></Review>
+      <AboutUs></AboutUs>
+      </div>
+      }></Route>
+      <Route path='/home' element={
+      <div>
+      <Banner></Banner>
+      <Product></Product>
+      <Review></Review>
+      <AboutUs></AboutUs>
+      </div>
+      }></Route>
+      <Route path='/explore' element={
+      <Explore></Explore>}></Route>
+      <Route path='/placeOrder/:bikeId' element={
+      <PlaceOrder></PlaceOrder>}></Route>
+      <Route path='/login' element={
         <Login></Login>
+      }></Route>
+      <Route path='/register' element={
+        <Register></Register>
+      }></Route>
+      <Route path='/dashboard' element={
+        <Dashboard></Dashboard>
+      }>
+        <Route path="home" element={<DashboardHome/>}/>
+        <Route path="myorder" element={<MyOrder/>}/>
+        <Route path="payment" element={<Payment/>}/>
+        <Route path="review" element={<DashboardReview/>}/>           
+        <Route path="manageallorders" element={<ManageAllOrders/>}/>           
+        <Route path="makeadmin" element={<MakeAdmin/>}/>           
+        <Route path="addproduct" element={<AddProduct/>}/>           
+        <Route path="manageproduct" element={<ManageProduct/>}/>           
       </Route>
-      <Footer></Footer>
+    </Routes>
+    <Footer></Footer>
     </BrowserRouter>
-      </AuthProvider>
   );
-}
+};
 
 export default App;

@@ -2,15 +2,15 @@ import React from 'react';
 
 const Banner = () => {
     return (
-        <div className="d-flex m-5 align-items-center">
-        <div className="w-50">
-            <h1>Sometimes We have
-Free Delivery</h1>
-Get the benefit of Cash on Collection, You can book in simple 3 steps. Get Quote Now! Bangladesh's best international courier service near you</div>
-        <div className="w-50">
-            <img className="w-75" src="https://console.kr-asia.com/wp-content/uploads/2020/05/Food-Delivery-Shutterstock-M-Size-1-scaled.jpg" alt="" />
+        <div className="md:flex m-14 items-center">
+        <div className="md:w-1/2">
+            <img className="w-full" src="https://i.ibb.co/60tH0Z3/yamaha-yzf-r15-v-3-0-bike-500x500.jpg" alt="" />
         </div>
+        <div className="md:w-1/2">
+            <h1 className='text-6xl'>This is the world Largest bike website</h1>
+            <h1 className='text-4xl pt-9'>Here,you can find your favourite bike.We provide most amazing bike for our customer.</h1></div>
         </div>
     );
 };
+
 export default Banner;

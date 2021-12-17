@@ -1,0 +1,14 @@
+[
+    {"name":"Honda Motorcycle","description":"this is a honda you want.","img":"https://i.ibb.co/dpnT1Ph/2021-Honda-CBR500-R.jpg","price":"120000"},
+    {"name":"Yamaha Bike","description":"this is a honda you want.","img":"https://i.ibb.co/FWsPJ0K/yamaha-yzf-r15-v3-first1.jpg","price":"220000"},
+    {"name":"Electric Bike","description":"this is a honda you want.","img":"https://i.ibb.co/LNgmH4n/exploit-m3.jpg","price":"150000"},
+    {"name":"hero Bike","description":"this is a honda you want.","img":"https://i.ibb.co/C8x5WsW/1486030508-hero-hf-deluxe.jpg","price":"100000"},
+    {"name":"Bajaj Bike","description":"this is a honda you want.","img":"https://i.ibb.co/h2hK8st/bajaj-pulsar-220f-ns200-bs6-prices-increased-1-1621335961322-1621412752887.webp","price":"240000"},
+    {"name":"hero honda","description":"this is a honda you want.","img":"https://i.ibb.co/qWLkw5M/20200401093850-bike-140.jpg","price":"110000"},
+    {"name":"Black Yamaha YZF R15 V 3.0 Bike","description":"this is a honda you want.","img":"https://i.ibb.co/x1s6hQK/yamaha-r15-v3-in-darknight-color.jpg","price":"260000"},
+    {"name":"Yamaha FZ FI","description":"this is a honda you want.","img":"https://i.ibb.co/sjXRhqF/fzs-armada-blue-2.jpg","price":"230000"},
+    {"name":"Yamaha YZF R15 V 3.0 Bike","description":"this is a honda you want.","img":"https://i.ibb.co/dcttjp5/yamaha-yzf-r15-v3-red-360x240.webp","price":"120000"},
+    {"name":"Yamaha SZ-RR","description":"this is a honda you want.","img":"https://i.ibb.co/hBD0ZXN/yamaha-sz-standard.jpg","price":"250000"},
+    {"name":"Tvs honda","description":"this is a honda you want.","img":"https://i.ibb.co/pJkXdj2/rtr-160-bs6-360x240.webp","price":"150000"},
+    {"name":"Discover honda","description":"this is a honda you want.","img":"https://i.ibb.co/qp2HLsm/bajaj-discover-125.jpg","price":"180000"}
+]
