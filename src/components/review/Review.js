@@ -16,7 +16,7 @@ const Review = () => {
         <div className='grid grid-cols-3 text-4xl mx-5'>
             {reviews.map(review=>
     <div key={review._id} className='my-9 mx-auto'>
-    <div className='w-80 py-8 shadow-2xl rounded-lg px-5'>
+    <div className='w-full py-8 shadow-2xl rounded-lg px-5'>
         <img className='w-full h-56' src={review.photoURL} alt="" />
         <h1 className='text-4xl mb-5'>Name : {review.name}</h1>
         <h5 className='text-2xl mb-5 break-words'>{review.comments}</h5>
