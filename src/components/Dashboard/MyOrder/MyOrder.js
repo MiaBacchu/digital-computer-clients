@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
-import useFirebase from '../../../Hooks/useFirebase/useFirebase';
+import { useState } from 'react';
+import useAuth from '../../../Hooks/Context/useAuth';
 
 const MyOrder = () => {
-    const {user}=useFirebase()
+    const {user}=useAuth()
     const [products,setProducts]=useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/order/${user.email}`)
+        fetch(`https://still-ravine-45870.herokuapp.com/order/${user.email}`)
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[user])
     const handleDelete=(id)=>{
         if (window.confirm('are you sure?')) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://still-ravine-45870.herokuapp.com/order/${id}`, {
             method: 'DELETE',
             })
         .then(res =>res.json())

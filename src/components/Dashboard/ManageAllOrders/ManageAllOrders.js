@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
-
+import { useState } from 'react';
 const ManageAllOrders = () => {
     const [orders,setOrders]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/order')
+        fetch('https://still-ravine-45870.herokuapp.com/order')
         .then(res=>res.json())
         .then(data=>setOrders(data))
     },[])
 
     const handleUpdate=(id)=>{
-        fetch(`http://localhost:5000/order/${id}`,{
+        fetch(`https://still-ravine-45870.herokuapp.com/order/${id}`,{
             method:'PUT'
         })
         .then(res=>res.json())
@@ -22,7 +21,7 @@ const ManageAllOrders = () => {
     }
     const handleDelete=(id)=>{
         if (window.confirm('are you sure?')) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://still-ravine-45870.herokuapp.com/order/${id}`, {
             method: 'DELETE',
             })
         .then(res =>res.json())

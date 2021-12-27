@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import useFirebase from '../../../Hooks/useFirebase/useFirebase';
+import useAuth from '../../../Hooks/Context/useAuth';
 
 const DashboardReview = () => {
-    const {user}=useFirebase()
+    const {user}=useAuth()
     const nameRef=useRef()
     const photoRef=useRef()
     const ratingsRef=useRef()
@@ -15,7 +15,7 @@ const DashboardReview = () => {
         const ratings=ratingsRef.current.value
         const comments=commentsRef.current.value
         const newReview={name,photoURL,ratings,comments}
-        fetch('http://localhost:5000/review',{
+        fetch('https://still-ravine-45870.herokuapp.com/review',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

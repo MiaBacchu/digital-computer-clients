@@ -6,7 +6,7 @@ const MakeAdmin = () => {
     const handleAdmin=()=>{
         const email=emailRef.current.value
         const user={email}
-        fetch('http://localhost:5000/user/admin',{
+        fetch('https://still-ravine-45870.herokuapp.com/user/admin',{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

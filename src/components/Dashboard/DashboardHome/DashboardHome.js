@@ -1,8 +1,8 @@
 import React from 'react';
-import useFirebase from '../../../Hooks/useFirebase/useFirebase';
+import useAuth from '../../../Hooks/Context/useAuth';
 
 const DashboardHome = () => {
-    const {user}=useFirebase()
+    const {user}=useAuth()
     return (
         <div className='m-5'>
             <p className='text-4xl m-5'>Welcome {user.displayName} to your Dashboard!</p>

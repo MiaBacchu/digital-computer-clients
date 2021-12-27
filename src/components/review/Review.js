@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Rating from 'react-rating';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 const Review = () => {
     const [reviews,setReviews]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/review')
+        fetch('https://still-ravine-45870.herokuapp.com/review')
         .then(res=>res.json())
         .then(data=>setReviews(data))
     },[])

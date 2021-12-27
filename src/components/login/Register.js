@@ -1,9 +1,11 @@
 import React,{ useState } from 'react';
-import { Link } from 'react-router-dom';
-import useFirebase from '../../Hooks/useFirebase/useFirebase';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../Hooks/Context/useAuth';
 
 const Register = () => {
-    const {error,emailRegister}=useFirebase()
+    const navigate=useNavigate()
+    const location=useLocation()
+    const {error,emailRegister}=useAuth()
     const [loginData,setLogindata]=useState({})
     
     const handleChange=(e)=>{
@@ -19,7 +21,7 @@ const Register = () => {
             alert("password did't match")
             return
         }
-        emailRegister(loginData.email,loginData.password,loginData.name)
+        emailRegister(loginData.email,loginData.password,loginData.name,navigate,location)
     }
     return (
         <div className='text-center my-16'>

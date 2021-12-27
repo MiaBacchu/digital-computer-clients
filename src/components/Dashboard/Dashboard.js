@@ -3,11 +3,11 @@ import { AiFillHome, AiOutlineLogout } from "react-icons/ai";
 import { FaFirstOrder } from "react-icons/fa";
 import {MdPayment, MdReviews } from "react-icons/md";
 import {GiHomeGarage } from "react-icons/gi";
-import useFirebase from '../../Hooks/useFirebase/useFirebase';
 import {Link, Outlet} from "react-router-dom";
+import useAuth from '../../Hooks/Context/useAuth';
 
 const Dashboard = () => {
-    const {user,admin,Logout}=useFirebase()
+    const {user,admin,Logout}=useAuth()
     return (
         <div className='grid grid-cols-12'>
             <div className='col-span-3 mx-auto text-2xl'>

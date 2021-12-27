@@ -13,7 +13,7 @@ const AddProduct = () => {
         const img=imgRef.current.value
         const price=priceRef.current.value
         const newBike={name,description,img,price}
-        fetch('http://localhost:5000/bike',{
+        fetch('https://still-ravine-45870.herokuapp.com/bike',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

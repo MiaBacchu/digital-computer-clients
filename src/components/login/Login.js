@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import useFirebase from '../../Hooks/useFirebase/useFirebase';
+import useAuth from '../../Hooks/Context/useAuth';
 
 const Login = () => {
-    const {error,emailLogin,signInWithGoogle,signInWithGithub,signInWithFacebook}=useFirebase()
+    const navigate=useNavigate()
+    const location=useLocation()
+    const {error,emailLogin,signInWithGoogle,signInWithGithub,signInWithFacebook}=useAuth()
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
     const handleEmail=(e)=>{
@@ -14,7 +16,7 @@ const Login = () => {
         setPassword(e.target.value)
     }
     const handleSubmit=(e)=>{
-        emailLogin(email,password)
+        emailLogin(email,password,navigate,location)
         e.preventDefault()
     }
     return (
@@ -33,7 +35,7 @@ const Login = () => {
     <div className='text-3xl'> new user ? <Link className='text-3xl text-blue-800' to='/register'>please Register</Link></div>
     <br/>
       <br/>
-            <button onClick={signInWithGoogle} className='text-2xl text-white p-3 rounded-lg bg-blue-700 focus:ring-2 hover:bg-blue-800'>Google Sign In</button>
+            <button onClick={()=>signInWithGoogle(navigate,location)} className='text-2xl text-white p-3 rounded-lg bg-blue-700 focus:ring-2 hover:bg-blue-800'>Google Sign In</button>
             <br/>
             <br/>
             <button disabled onClick={signInWithGithub} className='text-2xl text-white p-3 rounded-lg bg-blue-700 focus:ring-2 hover:bg-blue-800'>Github Login</button>

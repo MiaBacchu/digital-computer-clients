@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useFirebase from '../../Hooks/useFirebase/useFirebase';
+import useAuth from '../../Hooks/Context/useAuth';
 
-const PlaceOrder = () => {
-    const {user}=useFirebase()
+const Placeproduct = () => {
+    const {user}=useAuth()
     const {bikeId}=useParams()
     const [product,setProduct]=useState({})
     const nameRef=useRef()
@@ -13,10 +13,10 @@ const PlaceOrder = () => {
     const addressRef=useRef()
     const phoneRef=useRef()
     useEffect(()=>{
-        fetch(`http://localhost:5000/bike/${bikeId}`)
+        fetch(`https://still-ravine-45870.herokuapp.com/bike/${bikeId}`)
         .then(res=>res.json())
         .then(data=>setProduct(data))
-    },[bikeId])
+    },[bikeId,user.email])
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -26,20 +26,35 @@ const PlaceOrder = () => {
         const productPrice=priceRef.current.value
         const userAddress=addressRef.current.value
         const userPhone=phoneRef.current.value
-        const newOrder={userName,userEmail,productName,productPrice,userAddress,userPhone,status:"pending"}
-        fetch('http://localhost:5000/order',{
+        const newproduct={userName,userEmail,productName,productPrice,userAddress,userPhone,status:"pending"}
+        fetch('https://still-ravine-45870.herokuapp.com/product',{
         method:'POST',
         headers:{
             'content-type':'application/json'
         },
-        body:JSON.stringify(newOrder)
+        body:JSON.stringify(newproduct)
         })
         .then(res=>res.json())
         .then(data=>{
-            window.location.href='/dashboard/myorder' 
+            window.location.href='/dashboard/myproduct' 
         })
     }
     return (
+        <>
+        <table className='w-full mb-8 text-3xl'>
+            <tr className='bg-yellow-400'>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>product Name</th>
+                    <th>product Price</th>
+                </tr>
+                <tr>
+                    <td className='text-center'>{user.displayName}</td>
+                    <td className='text-center'>{user.email}</td>
+                    <td className='text-center'>{product.name}</td>
+                    <td className='text-center'>{product.price}</td>
+                </tr>
+            </table>
         <div className='md:flex gap-4 lg:justify-around items-center m-8'>
             <div className='shadow-2xl rounded-lg md:w-1/2 lg:w-1/3 xl:w-1/4'>
     <img className='w-full h-72 rounded-lg' src={product.img} alt="..."/> 
@@ -71,7 +86,8 @@ const PlaceOrder = () => {
       <input className='w-96 h-14 bg-blue-700 text-white text-3xl focus:ring-2 hover:bg-blue-800 rounded-md text-2xl' type="submit" />
     </form>
         </div>
+        </>
     );
 };
 
-export default PlaceOrder;
+export default Placeproduct;

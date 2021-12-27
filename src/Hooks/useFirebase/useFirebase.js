@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 initializeAthentication()
 const useFirebase = () => {
+    const [loading,setLoading]=useState(true)
     const [user,setUser]=useState([])
     const[error,setError]=useState('')
     const [admin,setAdmin]=useState()
@@ -13,10 +14,16 @@ const useFirebase = () => {
     const facebookProvider = new FacebookAuthProvider();
     const auth = getAuth();
 
-    const emailRegister=(email, password,name)=>{
+    const emailRegister=(email, password,name,navigate,location)=>{
         createUserWithEmailAndPassword(auth, email, password)
         .then(result=> {
             setUser(result.user)
+            if (location?.state?.from) {
+                navigate(location.state.from)
+            }
+            else{
+                navigate('/')
+            }
             saveUser(name,email,'POST')
             updateProfile(auth.currentUser, {
                 displayName: name
@@ -28,25 +35,42 @@ const useFirebase = () => {
           });
     }
 
-    const emailLogin=(email,password)=>{
+    const emailLogin=(email,password,navigate,location)=>{
+        setLoading(true)
         signInWithEmailAndPassword(auth, email, password)
         .then(result=> {
             setUser(result.user)
+            if (location?.state?.from) {
+                navigate(location.state.from)
+            }
+            else{
+                navigate('/')
+            }
           })
           .catch(error=> {
             setError(error.message)
           })
+          .finally(setLoading(false))
     }
 
-    const signInWithGoogle=()=>{
+    const signInWithGoogle=(navigate,location)=>{
+        setLoading(true)
         signInWithPopup(auth, googleProvider)
         .then(result=>{
             setUser(result.user)
+            if (location?.state?.from) {
+                navigate(location.state.from)
+            }
+            else{
+                navigate('/')
+            }
+            setLoading(false)
             saveUser(user.displayName,user.email,'PUT')
         })
         .catch(error=>{
             setError(error.message)
         })
+        .finally(setLoading(false))
     }
 
     const signInWithGithub=()=>{
@@ -83,12 +107,13 @@ const useFirebase = () => {
                 if (user) {
                   setUser(user)
                 }
+                setLoading(false)
               })
-    },[auth])
+    },[auth,user.email])
 
     const saveUser=(displayName,email,method)=>{
         const newUser={displayName,email}
-        fetch('http://localhost:5000/user',{
+        fetch('https://still-ravine-45870.herokuapp.com/user',{
             method:method,
             headers:{
                 'content-type':'application/json'
@@ -99,17 +124,22 @@ const useFirebase = () => {
         .then(data=>{
         })
     }
-
     useEffect(()=>{
-        fetch(`http://localhost:5000/user/${user.email}`)
+        setLoading(true)
+        console.log(user.email)
+        fetch(`https://still-ravine-45870.herokuapp.com/user/${user?.email}`)
     .then(res=>res.json())
-    .then(data=>setAdmin(data))
-    },[user])
+    .then(data=>{
+        setAdmin(data)
+        setLoading(false)
+    })
+    },[user.email])
     return (
         {
             user,
             error,
             admin,
+            loading,
             emailRegister,
             emailLogin,
             signInWithGoogle,

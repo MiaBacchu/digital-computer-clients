@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link, NavLink } from "react-router-dom";
-import useFirebase from "../../Hooks/useFirebase/useFirebase";
+import useAuth from "../../Hooks/Context/useAuth";
 
 const Header=()=> {
-  const {user,Logout}=useFirebase()
+  const {user,Logout}=useAuth()
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -38,13 +38,8 @@ const Header=()=> {
                     Explore
                   </Link>
 
-                  <div className="text-white px-3 py-2 rounded-md text-4xl font-medium"
-                  style={user.displayName || user.photoURL ? {display:'block'} : {display:'none'} } 
-                  >
-                    <div className='flex gap-2 items-end'>
-                    <p style={user.photoURL ? {display:'block'} : {display:'none'} } className='w-8 h-8'><img className='w-full h-full rounded-lg' src={user.photoURL} alt="..."/></p>
-                    <p style={user.displayName ? {display:'block'} : {display:'none'} } className='min-w-56'>{user.displayName}</p>
-                    </div> 
+                  <div style={user.displayName || user.email || user.photoURL ? {display:'block'} : {display:'none'} } className="text-white px-3 py-2 rounded-md text-4xl font-medium min-w-56">
+                    {user.displayName ? user.displayName : "No Name"}
                   </div>
 
                   <Link onClick={Logout} to='/login'

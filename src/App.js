@@ -19,10 +19,14 @@ import Register from './Components/Login/Register';
 import PlaceOrder from './Components/PlaceOrder/PlaceOrder';
 import Product from './Components/Product/Product';
 import Review from './Components/Review/Review';
+import AuthProvider from './Hooks/Context/AuthProvider';
+import AdminRoute from './PrivateRoute/AdminRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
     <Header></Header>
     <Routes>
       <Route path='/' element={
@@ -43,8 +47,12 @@ const App = () => {
       }></Route>
       <Route path='/explore' element={
       <Explore></Explore>}></Route>
-      <Route path='/placeOrder/:bikeId' element={
-      <PlaceOrder></PlaceOrder>}></Route>
+      <Route path='/placeOrder/:bikeId' 
+      element={
+      <PrivateRoute redirectTo="/login">
+        <PlaceOrder></PlaceOrder>
+      </PrivateRoute>}>
+      </Route>
       <Route path='/login' element={
         <Login></Login>
       }></Route>
@@ -52,20 +60,23 @@ const App = () => {
         <Register></Register>
       }></Route>
       <Route path='/dashboard' element={
-        <Dashboard></Dashboard>
+        <PrivateRoute redirectTo="/login">
+          <Dashboard></Dashboard>
+        </PrivateRoute>
       }>
-        <Route path="home" element={<DashboardHome/>}/>
-        <Route path="myorder" element={<MyOrder/>}/>
-        <Route path="payment" element={<Payment/>}/>
-        <Route path="review" element={<DashboardReview/>}/>           
-        <Route path="manageallorders" element={<ManageAllOrders/>}/>           
-        <Route path="makeadmin" element={<MakeAdmin/>}/>           
-        <Route path="addproduct" element={<AddProduct/>}/>           
-        <Route path="manageproduct" element={<ManageProduct/>}/>           
+      <Route path="home" element={<DashboardHome/>}/>
+      <Route path="myorder" element={<MyOrder/>}/>
+      <Route path="payment" element={<Payment/>}/>
+      <Route path="review" element={<DashboardReview/>}/>           
+      <Route path="manageallorders" element={<AdminRoute redirectTo='/login'><ManageAllOrders/></AdminRoute>}/>           
+      <Route path="makeadmin" element={<AdminRoute redirectTo='/login'><MakeAdmin/></AdminRoute>}/>           
+      <Route path="addproduct" element={<AdminRoute redirectTo='/login'><AddProduct/></AdminRoute>}/>           
+      <Route path="manageproduct" element={<AdminRoute redirectTo='/login'><ManageProduct/></AdminRoute>}/>           
       </Route>
     </Routes>
     <Footer></Footer>
     </BrowserRouter>
+    </AuthProvider>
   );
 };
 
