@@ -8,7 +8,6 @@ const useFirebase = () => {
     const [user,setUser]=useState([])
     const[error,setError]=useState('')
     const [admin,setAdmin]=useState()
-    console.log(admin)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const facebookProvider = new FacebookAuthProvider();

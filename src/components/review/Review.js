@@ -19,7 +19,7 @@ const Review = () => {
     <div className='w-full py-8 shadow-2xl rounded-lg px-5'>
         <img className='w-full h-56' src={review.photoURL} alt="" />
         <h1 className='text-4xl mb-5'>Name : {review.name}</h1>
-        <h5 className='text-2xl mb-5 break-words'>{review.comments}</h5>
+        <h5 className='text-2xl mb-5 break-all'>{review.comments}</h5>
         <h1>
             <Rating
             emptySymbol={<AiOutlineStar  className='text-yellow-400'/>}
